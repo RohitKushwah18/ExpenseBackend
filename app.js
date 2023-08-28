@@ -4,8 +4,8 @@ const app = express()
 const db = require('./db/db');
 const {readdirSync} = require('fs');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
 const session = require('express-session');
+const apiBaseUrl = process.env.API_BASE_URL || '/api/v3';
  
 require('dotenv').config()
 
@@ -14,7 +14,7 @@ const PORT =process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
 
-readdirSync('./routes').map((route) => app.use('/api/v3', require('./routes/' + route)))
+readdirSync('./routes').map((route) => app.use(apiBaseUrl, require('./routes/' + route)))
 const server = () => {
     db()
     app.listen(PORT, () => {

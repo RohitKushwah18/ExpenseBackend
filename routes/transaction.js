@@ -11,6 +11,5 @@ router.post('/add-income', addIncome)
       .delete('/delete-expense/:id', deleteExpense)
       .post('/signup', registerControllers)
       .post('/login', loginControllers)
-      // .post('/logout', logout)
 
 module.exports = router;
