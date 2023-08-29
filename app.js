@@ -6,9 +6,7 @@ const {readdirSync} = require('fs');
 
 const session = require('express-session');
 require('dotenv').config()
-const BASE_URL = process.env.BASE_URL
-
-console.log('BASE_URL:', BASE_URL);
+const BASE_URL = process.env.BASE_URL || "/api/v3/";
 
 
 const PORT =process.env.PORT
@@ -17,6 +15,7 @@ app.use(express.json())
 app.use(cors())
 
 readdirSync('./routes').map((route) => app.use(BASE_URL, require('./routes/' + route)))
+
 const server = () => {
     db()
     app.listen(PORT, () => {
