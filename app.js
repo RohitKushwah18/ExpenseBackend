@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express()
 const db = require('./db/db');
 const {readdirSync} = require('fs');
-const bodyParser = require('body-parser');
+
 const session = require('express-session');
 require('dotenv').config()
 const BASE_URL = process.env.BASE_URL
